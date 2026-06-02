@@ -7,241 +7,151 @@
     
     <style>
         /* ==========================================================================
-           1. CONFIGURAÇÕES DE CORES DA SUA MARCA (Troque os códigos hexadecimais aqui)
+           🎨 CORES DO SITE: Mude os códigos # aqui para alterar as cores de tudo
            ========================================================================== */
         :root {
-            --cor-fundo: #ffffff;      /* Cor do fundo principal do site */
-            --cor-texto: #1a1a1a;      /* Cor das letras e textos principais */
-            --cor-destaque: #000000;   /* Cor para detalhes, botões ou links importantes */
-            --cor-rodape: #f4f4f4;     /* Cor de fundo da barra de contatos (rodapé) */
+            --cor-fundo: #ffffff;      
+            --cor-texto: #1a1a1a;      
+            --cor-rodape: #f4f4f4;     
         }
 
         /* ==========================================================================
-           2. IMPORTAÇÃO E CONFIGURAÇÃO DA FONTE MONTSERRAT
+           ⚙️ CONFIGURAÇÕES GERAIS 
            ========================================================================== */
-        /* Busca a fonte diretamente nos servidores do Google */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-
-        /* O asterisco (*) significa: APLIQUE EM TUDO. Garante a Montserrat em todo o site */
+        
         * {
             font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box; /* Evita que paddings e bordas quebrem o tamanho dos elementos */
+            box-sizing: border-box; 
         }
 
-        /* Configurações da página como um todo */
         body, html {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
-            scroll-behavior: smooth; /* Deixa o efeito de rolagem suave ao clicar no menu */
+            scroll-behavior: smooth;
         }
 
         /* ==========================================================================
-           3. ESTILOS DO MENU SUPERIOR (NAVBAR)
+           📱 MENU SUPERIOR E LOGO 
            ========================================================================== */
         nav {
-            position: fixed;        /* Fixa o menu no topo da tela, ele não some ao rolar */
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;     /* Espaçamento interno (20px cima/baixo, 50px lados) */
-            display: flex;          /* Ativa o modo de layout flexível */
-            justify-content: space-between; /* Empurra a Logo para a esquerda e o Menu para a direita */
-            align-items: center;    /* Alinha o texto verticalmente no centro */
-            background-color: rgba(255, 255, 255, 0.95); /* Fundo branco sutilmente transparente */
-            z-index: 1000;          /* Garante que o menu fique por cima de qualquer foto */
-            border-bottom: 1px solid #eaeaea; /* Linha fina cinza abaixo do menu */
+            position: fixed;        
+            top: 0; width: 100%;
+            height: 80px; /* ALTURA FIXA DA BARRA BRANCA */
+            padding: 0 50px; 
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(255, 255, 255, 0.95); 
+            z-index: 1000; border-bottom: 1px solid #eaeaea;
         }
 
-        /* Estilo do texto da sua Logo */
-        nav .logo {
-            font-size: 24px;
-            font-weight: 600;       /* Deixa a logo mais negritada */
-            letter-spacing: -1px;   /* Junta um pouquinho as letras para dar estilo */
-            text-transform: uppercase; /* Força o texto a ficar em MAIÚSCULO */
-        }
-        /* Configuração do tamanho da imagem da logo no menu */
+        nav .logo { display: flex; align-items: center; }
+
+        /* 📏 TAMANHO DA LOGO */
         nav .logo img {
-            height: 10px; /* Altura recomendada. Aumente ou diminua conforme precisar */
-            width: auto;  /* Mantém a proporção da imagem sem achatar */
-            display: block;
+            max-height: 55px; 
+            width: auto;
+            object-fit: contain;
         }
 
-        /* Links do Menu (Sobre, Projetos, Contato) */
+        /* Textos do menu (Sobre, Projetos, Contato) */
         nav .menu-links a {
-            text-decoration: none;  /* Remove o sublinhado padrão de links */
-            color: var(--cor-texto);/* Usa a cor definida lá no :root */
-            margin-left: 30px;      /* Espaço entre um link e outro */
-            font-size: 14px;
-            font-weight: 400;
-            text-transform: uppercase;
-            transition: 0.3s;       /* Tempo da animação de transição */
+            text-decoration: none; color: var(--cor-texto);
+            margin-left: 30px; font-size: 14px; font-weight: 500;
+            text-transform: uppercase; transition: 0.3s;
         }
-
-        /* Efeito quando o usuário passa o mouse por cima do link do menu */
-        nav .menu-links a:hover {
-            opacity: 0.5;           /* Deixa o texto meio transparente */
-        }
+        nav .menu-links a:hover { opacity: 0.5; }
 
         /* ==========================================================================
-           4. ESTILOS DA CAPA PRINCIPAL (HERO)
+           🖼️ CAPA PRINCIPAL (FOTO GRANDE)
            ========================================================================== */
         .hero {
-            height: 100vh;          /* Ocupa 100% da altura da tela do dispositivo */
-            display: flex;
-            align-items: center;    /* Centraliza o texto verticalmente */
-            justify-content: center; /* Centraliza o texto horizontalmente */
-            text-align: center;
-            /* IMAGEM DE FUNDO: O linear-gradient aplica uma película escura sobre a foto para o texto branco aparecer */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;       /* Ajusta a foto para preencher toda a tela sem distorcer */
-            background-position: center;  /* Centraliza o foco da foto */
-            color: white;
-            margin-top: 60px;             /* Espaço para não ficar embaixo do menu */
-        }
-
-        /* Título grande dentro da capa */
-        .hero h1 {
-            font-size: 4rem;        /* Tamanho grande da fonte */
-            font-weight: 300;       /* Fonte mais fina e elegante */
-            margin: 0;
-            letter-spacing: 2px;    /* Afasta um pouco as letras */
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding-top: 80px; /* Espaço exato da altura da barra para não tampar a foto */
+            
+            /* 📸 FOTO DE CAPA ATUALIZADA */
+            background-image: url('Capa.png');
+            background-size: cover; 
+            background-position: center; 
         }
 
         /* ==========================================================================
-           5. ESTILOS DO TEXTO INSTITUCIONAL / MANIFESTO
+           📝 SEÇÃO "SOBRE"
            ========================================================================== */
         .manifesto {
-            padding: 100px 20px;    /* Muito espaço em cima e embaixo para dar o respiro do Superlimão */
-            max-width: 800px;       /* Limita a largura do texto para não ficar gigante em telas grandes */
-            margin: 0 auto;         /* Centraliza o bloco na tela */
-            text-align: center;
+            padding: 100px 20px; max-width: 800px; margin: 0 auto; text-align: center;
         }
-
-        .manifesto h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-
-        .manifesto p {
-            font-size: 1.1rem;
-            line-height: 1.8;       /* Espaçamento entre as linhas do texto */
-            font-weight: 300;
-            color: #555555;         /* Tom de cinza escuro para leitura confortável */
-        }
+        .manifesto h2 { font-size: 2rem; font-weight: 400; margin-bottom: 30px; }
+        .manifesto p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; color: #555555; }
 
         /* ==========================================================================
-           6. ESTILOS DA GRADE DE PROJETOS (MOSAICO DOS PROJETOS)
+           🏢 GALERIA DE PROJETOS
            ========================================================================== */
         .projetos {
-            display: grid;          /* Ativa o modo de grade (mosaico) */
-            /* Cria colunas automáticas. Cada quadrado terá no mínimo 400px. Se couber mais na tela, ele joga pro lado */
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 5px;               /* Linha fina de separação entre os projetos */
-            padding: 5px;
+            gap: 5px; padding: 5px;
         }
-
-        /* Remove estilos de link que ficam em volta do quadrado do projeto */
-        .link-projeto {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        /* O quadrado de cada projeto */
+        .link-projeto { text-decoration: none; color: inherit; display: block; }
         .projeto-item {
-            position: relative;     /* Permite posicionar a legenda preta exatamente em cima da foto */
-            height: 400px;          /* Altura fixa do quadrado da foto */
-            overflow: hidden;       /* Corta o que passar do tamanho do quadrado (essencial para o efeito de zoom) */
-            cursor: pointer;        /* Muda o mouse para a mãozinha de clique */
+            position: relative; height: 400px; overflow: hidden; cursor: pointer;
         }
-
-        /* Configuração da imagem do projeto */
         .projeto-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;      /* Preenche o quadrado sem achatar a imagem */
-            transition: transform 0.6s ease; /* Velocidade do efeito de zoom quando passa o mouse */
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
         }
-
-        /* A "cortina" escura com os textos que aparece ao passar o mouse */
+        
         .projeto-item .overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.65); /* Fundo preto com 65% de opacidade */
-            display: flex;
-            flex-direction: column; /* Alinha o título em cima e a descrição embaixo */
-            justify-content: center;/* Centraliza os textos verticalmente */
-            align-items: center;    /* Centraliza os textos horizontalmente */
-            opacity: 0;             /* Fica invisível por padrão */
-            transition: opacity 0.4s ease; /* Velocidade do efeito de aparecer */
-            color: white;
-            text-align: center;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.4s ease; color: white; text-align: center;
         }
-
-        /* REGRAS DE ANIMAÇÃO (Acontecem quando o mouse passa por cima: hover) */
-        .projeto-item:hover img {
-            transform: scale(1.05); /* Dá um zoom de 5% na imagem */
-        }
-
-        .projeto-item:hover .overlay {
-            opacity: 1;             /* Torna a cortina escura visível */
-        }
-
-        /* Textos dentro da cortina escura do projeto */
-        .overlay h3 {
-            font-size: 1.8rem;
-            margin: 0 0 10px 0;
-            font-weight: 400;
-        }
-        .overlay p {
-            margin: 0;
-            font-weight: 300;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        
+        .projeto-item:hover img { transform: scale(1.05); } 
+        .projeto-item:hover .overlay { opacity: 1; } 
+        
+        .overlay h3 { font-size: 1.8rem; margin: 0 0 10px 0; font-weight: 400; }
+        .overlay p { margin: 0; font-weight: 300; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
         /* ==========================================================================
-           7. ESTILOS DO RODAPÉ (INFORMAÇÕES DE CONTATO)
+           📞 RODAPÉ
            ========================================================================== */
         footer {
             background-color: var(--cor-rodape);
-            padding: 60px 50px;
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Divide o rodapé em 2 colunas iguais */
-            gap: 40px;
-            font-size: 0.9rem;
+            padding: 60px 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; font-size: 0.9rem;
         }
-        footer h4 { margin-top: 0; font-size: 1.2rem; }
-        footer p { margin: 5px 0; color: #666666; }
+        /* Ajuste de margens para aproximar os textos do rodapé */
+        footer h4 { margin: 0 0 5px 0; font-size: 1.2rem; }
+        footer p { margin: 2px 0; color: #666666; }
 
         /* ==========================================================================
-           8. RESPONSIVIDADE (Ajustes automáticos para celular)
+           📱 AJUSTES PARA CELULAR
            ========================================================================== */
         @media (max-width: 768px) {
-            nav { padding: 15px 20px; flex-direction: column; } /* Menu vira vertical no celular */
+            nav { height: auto; padding: 15px 20px; flex-direction: column; } 
             nav .menu-links { margin-top: 15px; }
             nav .menu-links a { margin: 0 10px; }
-            .hero h1 { font-size: 2.5rem; } /* Diminui o título da capa */
-            .projetos { grid-template-columns: 1fr; } /* Mosaico vira uma foto embaixo da outra */
-            footer { grid-template-columns: 1fr; text-align: center; } /* Rodapé vira uma coluna só centralizada */
+            nav .logo img { max-height: 45px; }
+            .projetos { grid-template-columns: 1fr; }
+            footer { grid-template-columns: 1fr; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-   <nav>
-        <div class="logo">
-            <a href="index.html">
-                <!-- Adicionamos o style logo após o alt -->
-                <img src="LOGO-01.png" alt="LOGO-01.png" style="height: 10px; width: auto;">
-            </a>
+    <nav>
+        <a href="#" class="logo">
+            <img src="LOGO-03.png" alt="Logo Seu Estúdio">
+        </a>
+        <div class="menu-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
         </div>
+    </nav>
 
-       <header class="hero">
-        <h1>Arquitetura e Precisão.</h1>
+    <header class="hero">
     </header>
 
     <section id="sobre" class="manifesto">
@@ -251,42 +161,33 @@
 
     <section id="projects-section" class="projetos">
         
-        <a href="brasilandia.html" class="link-projeto">
+        <!-- PROJETO 1: Único disponível -->
+        <a href="reforma-rita-jose.html" class="link-projeto">
             <div class="projeto-item">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Brasilândia">
+                <img src="Reforma Rita e José.png" alt="Reforma Rita e José">
                 <div class="overlay">
-                    <h3>Brasilândia</h3>
-                    <p>Implantação e Nível de Estacionamento</p>
+                    <h3>Reforma Rita e José</h3>
+                    <p>Projeto Residencial</p>
                 </div>
             </div>
         </a>
 
-        <a href="pirajucara.html" class="link-projeto">
+        <!-- PROJETO 2: Em desenvolvimento -->
+        <a href="#" class="link-projeto">
             <div class="projeto-item">
-                <img src="https://images.unsplash.com/photo-1541885966-2617f16723c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Pirajuçara">
+                <img src="em desenvol-1.jpg" alt="Projeto em Desenvolvimento">
                 <div class="overlay">
-                    <h3>Pirajuçara (EMEF)</h3>
-                    <p>Readequação Estrutural e Layout</p>
+                    <h3>indisponível</h3>
                 </div>
             </div>
         </a>
 
-        <a href="vila-gilda.html" class="link-projeto">
+        <!-- PROJETO 3: Em desenvolvimento -->
+        <a href="#" class="link-projeto">
             <div class="projeto-item">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Vila Gilda">
+                <img src="em desenvol-2.jpg" alt="Projeto em Desenvolvimento">
                 <div class="overlay">
-                    <h3>Vila Gilda</h3>
-                    <p>Projeto Executivo e Drenagem</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="interiores.html" class="link-projeto">
-            <div class="projeto-item">
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projetos Corporativos">
-                <div class="overlay">
-                    <h3>Interiores e Corporativo</h3>
-                    <p>Coordenação de Projetos</p>
+                    <h3>indisponível</h3>
                 </div>
             </div>
         </a>
@@ -295,14 +196,14 @@
 
     <footer id="contato">
         <div>
-            <h4>SEU ESTÚDIO</h4>
-            <p>Especialistas em Coordenação e Projetos Executivos.</p>
+            <h4>Umquarto</h4>
+            <p>Escritório de arquitetura</p>
         </div>
         <div style="text-align: right;">
-            <p>Av. Paulista, São Paulo - SP</p>
-            <p>contato@seustudio.com.br</p>
-            <p>+55 11 99999-9999</p>
-            <p><a href="#" style="color: #1a1a1a;">Instagram</a> | <a href="#" style="color: #1a1a1a;">LinkedIn</a></p>
+            <p>atendimento online SP | BH</p>
+            <p>escritorioumquarto@gmail.com</p>
+            <p>31 8369 1908</p>
+            <p><a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: #1a1a1a;">Instagram</a> | <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: #1a1a1a;">WhatsApp</a></p>
         </div>
     </footer>
 
