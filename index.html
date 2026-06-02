@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Estúdio | Arquitetura e Projetos Executivos</title>
+    <style>
+        /* ==========================================
+           CORES E FONTES (Altere as cores aqui!) 
+           ========================================== */
+        :root {
+            --cor-fundo: #ffffff;      
+            --cor-texto: #1a1a1a;      
+            --cor-destaque: #000000;   
+            --cor-rodape: #f4f4f4;     
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            scroll-behavior: smooth; 
+        }
+
+        /* ==========================================
+           MENU SUPERIOR (NAVBAR)
+           ========================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.95); 
+            z-index: 1000; 
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        nav .menu-links a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            margin-left: 30px;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav .menu-links a:hover {
+            opacity: 0.5; 
+        }
+
+        /* ==========================================
+           CAPA TELA CHEIA (HERO)
+           ========================================== */
+        .hero {
+            height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-top: 60px; 
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        /* ==========================================
+           SEÇÃO SOBRE / MANIFESTO
+           ========================================== */
+        .manifesto {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .manifesto h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .manifesto p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #555;
+        }
+
+        /* ==========================================
+           MOSAICO DE PROJETOS (GRID)
+           ========================================== */
+        .projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 5px; 
+            padding: 5px;
+        }
+
+        /* Link envolvendo os projetos para não sublinhar o texto */
+        .link-projeto {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .projeto-item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .projeto-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease; 
+        }
+
+        .projeto-item .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            color: white;
+            text-align: center;
+        }
+
+        .projeto-item:hover img {
+            transform: scale(1.05); 
+        }
+
+        .projeto-item:hover .overlay {
+            opacity: 1; 
+        }
+
+        .overlay h3 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            font-weight: 400;
+        }
+        .overlay p {
+            margin: 0;
+            font-weight: 300;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           RODAPÉ (FOOTER)
+           ========================================== */
+        footer {
+            background-color: var(--cor-rodape);
+            padding: 60px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            font-size: 0.9rem;
+        }
+        footer h4 { margin-top: 0; font-size: 1.2rem; }
+        footer p { margin: 5px 0; color: #666; }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; flex-direction: column; }
+            nav .menu-links { margin-top: 15px; }
+            nav .menu-links a { margin: 0 10px; }
+            .hero h1 { font-size: 2.5rem; }
+            .projetos { grid-template-columns: 1fr; }
+            footer { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENU SUPERIOR -->
+    <nav>
+        <div class="logo">SEU ESTÚDIO</div>
+        <div class="menu-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+        </div>
+    </nav>
+
+    <!-- CAPA -->
+    <header class="hero">
+        <h1>Arquitetura e Precisão.</h1>
+    </header>
+
+    <!-- MANIFESTO / SOBRE -->
+    <section id="sobre" class="manifesto">
+        <h2>Arquitetamos Soluções Executivas</h2>
+        <p>A escala dos projetos começa no conceito e se expande para o canteiro de obras. Nós somos especialistas em transformar projetos em realidade através de detalhamento técnico rigoroso e compatibilização estrutural, hidráulica e elétrica. Garantimos que sua obra seja executada com precisão absoluta — seja ajustando um alinhamento de rua exato para 741,484m conforme o COE, adequando layouts, ou garantindo a acessibilidade plena pela NBR 9050.</p>
+    </section>
+
+    <!-- GRID DE PROJETOS COM LINKS -->
+    <section id="projetos" class="projetos">
+        
+        <!-- PROJETO 1: BRASILÂNDIA -->
+        <a href="brasilandia.html" class="link-projeto">
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Brasilândia">
+                <div class="overlay">
+                    <h3>Brasilândia</h3>
+                    <p>Implantação e Nível de Estacionamento</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- PROJETO 2: PIRAJUÇARA (EMEF) -->
+        <a href="pirajucara.html" class="link-projeto">
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1541885966-2617f16723c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Pirajuçara">
+                <div class="overlay">
+                    <h3>Pirajuçara (EMEF)</h3>
+                    <p>Readequação Estrutural e Layout</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- PROJETO 3: VILA GILDA -->
+        <a href="vila-gilda.html" class="link-projeto">
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Vila Gilda">
+                <div class="overlay">
+                    <h3>Vila Gilda</h3>
+                    <p>Projeto Executivo e Drenagem</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- PROJETO 4: PROJETO GERAL -->
+        <a href="interiores.html" class="link-projeto">
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projetos Corporativos">
+                <div class="overlay">
+                    <h3>Interiores e Corporativo</h3>
+                    <p>Coordenação de Projetos</p>
+                </div>
+            </div>
+        </a>
+
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer id="contato">
+        <div>
+            <h4>SEU ESTÚDIO</h4>
+            <p>Especialistas em Coordenação e Projetos Executivos.</p>
+        </div>
+        <div style="text-align: right;">
+            <p>Av. Paulista, São Paulo - SP</p>
+            <p>contato@seustudio.com.br</p>
+            <p>+55 11 99999-9999</p>
+            <p><a href="#" style="color: #1a1a1a;">Instagram</a> | <a href="#" style="color: #1a1a1a;">LinkedIn</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

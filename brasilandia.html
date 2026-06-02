@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brasilândia | Seu Estúdio</title>
+    <style>
+        /* Mantemos as mesmas variáveis e fontes da página inicial */
+        :root {
+            --cor-fundo: #ffffff;
+            --cor-texto: #1a1a1a;
+            --cor-rodape: #f4f4f4;
+            --cor-cinza: #666666;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
+
+        /* MENU SUPERIOR (Idêntico ao da Home) */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-sizing: border-box; background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000; border-bottom: 1px solid #eaeaea;
+        }
+        nav .logo a { font-size: 24px; font-weight: 600; text-transform: uppercase; text-decoration: none; color: var(--cor-texto); }
+        nav .menu-links a { text-decoration: none; color: var(--cor-texto); margin-left: 30px; font-size: 14px; text-transform: uppercase; }
+
+        /* CAPA DO PROJETO */
+        .projeto-hero {
+            margin-top: 70px; /* Compensa o menu */
+            width: 100%;
+            height: 70vh; /* Altura da capa */
+        }
+        .projeto-hero img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* INFORMAÇÕES DO PROJETO (Layout estilo Superlimão) */
+        .projeto-info {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 50px;
+            gap: 50px;
+        }
+
+        .ficha-tecnica {
+            flex: 1; /* Ocupa 1 parte do espaço */
+        }
+        .ficha-tecnica h1 {
+            font-size: 2.5rem; margin-top: 0; margin-bottom: 20px; font-weight: 400;
+        }
+        .ficha-tecnica p {
+            margin: 5px 0; font-size: 0.95rem; color: var(--cor-cinza);
+        }
+        .ficha-tecnica span { font-weight: 600; color: var(--cor-texto); }
+
+        .descricao {
+            flex: 2; /* Ocupa 2 partes do espaço (mais largo) */
+        }
+        .descricao p {
+            font-size: 1.1rem; line-height: 1.8; font-weight: 300; margin-top: 0;
+        }
+
+        /* GALERIA DE FOTOS */
+        .galeria {
+            max-width: 1200px;
+            margin: 0 auto 80px auto;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Espaço entre as fotos da galeria */
+        }
+        .galeria img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* RODAPÉ (Idêntico ao da Home) */
+        footer {
+            background-color: var(--cor-rodape); padding: 60px 50px;
+            display: grid; grid-template-columns: 1fr 1fr; font-size: 0.9rem;
+        }
+        footer h4 { margin-top: 0; font-size: 1.2rem; }
+        footer p { margin: 5px 0; color: var(--cor-cinza); }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .projeto-info { flex-direction: column; padding: 0 20px; gap: 30px; margin: 40px auto; }
+            nav { padding: 15px 20px; flex-direction: column; }
+            nav .menu-links { margin-top: 15px; }
+            nav .menu-links a { margin: 0 10px; }
+            .galeria { padding: 0 20px; }
+            footer { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENU SUPERIOR (Com link para voltar à Home) -->
+    <nav>
+        <div class="logo"><a href="index.html">SEU ESTÚDIO</a></div>
+        <div class="menu-links">
+            <a href="index.html#sobre">Sobre</a>
+            <a href="index.html#projetos">Projetos</a>
+            <a href="index.html#contato">Contato</a>
+        </div>
+    </nav>
+
+    <!-- CAPA DO PROJETO -->
+    <section class="projeto-hero">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Fachada Brasilândia">
+    </section>
+
+    <!-- DETALHES DO PROJETO -->
+    <section class="projeto-info">
+        <!-- Esquerda: Ficha Técnica -->
+        <div class="ficha-tecnica">
+            <h1>Brasilândia</h1>
+            <p><span>Escopo:</span> Implantação e Executivo</p>
+            <p><span>Local:</span> São Paulo, SP</p>
+            <p><span>Ano:</span> 2026</p>
+            <p><span>Status:</span> Em andamento</p>
+        </div>
+
+        <!-- Direita: Texto Descritivo -->
+        <div class="descricao">
+            <p>O desenvolvimento da implantação deste projeto demandou atenção rigorosa aos detalhes topográficos e necessidades de fluxo. Um dos desafios principais foi o estudo e o planejamento estratégico para o aumento do nível do estacionamento, exigindo soluções precisas de compatibilização para garantir a acessibilidade e o correto escoamento do local.</p>
+            <p>Todo o processo foi pautado no cumprimento das diretrizes do COE, garantindo que o desenho técnico não apenas viabilize a estética, mas também a execução perfeita no canteiro de obras.</p>
+        </div>
+    </section>
+
+    <!-- GALERIA DE FOTOS (Scroll para baixo) -->
+    <section class="galeria">
+        <img src="https://images.unsplash.com/photo-1541885966-2617f16723c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Detalhe do estacionamento">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Perspectiva da implantação">
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div>
+            <h4>SEU ESTÚDIO</h4>
+            <p>Especialistas em Coordenação e Projetos Executivos.</p>
+        </div>
+        <div style="text-align: right;">
+            <p>Av. Paulista, São Paulo - SP</p>
+            <p>contato@seustudio.com.br</p>
+        </div>
+    </footer>
+
+</body>
+</html>
