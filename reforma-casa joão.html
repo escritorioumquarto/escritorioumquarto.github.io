@@ -45,12 +45,7 @@
         }
 
         nav .logo { display: flex; align-items: center; }
-
-        nav .logo img {
-            max-height: 55px; 
-            width: auto;
-            object-fit: contain;
-        }
+        nav .logo img { max-height: 55px; width: auto; object-fit: contain; }
 
         nav .menu-links a { 
             text-decoration: none; color: var(--cor-texto); margin-left: 30px; font-size: 14px; font-weight: 500; text-transform: uppercase; transition: 0.3s;
@@ -66,22 +61,15 @@
             height: 70vh;           
         }
         .projeto-hero img {
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover;      
+            width: 100%; height: 100%; object-fit: cover;      
         }
 
         /* ==========================================================================
            4. SEÇÃO DE TEXTOS
            ========================================================================== */
         .projeto-info {
-            display: flex;          
-            max-width: 1200px;
-            margin: 80px auto;      
-            padding: 0 50px;
-            gap: 50px;              
+            display: flex; max-width: 1200px; margin: 80px auto; padding: 0 50px; gap: 50px;              
         }
-
         .ficha-tecnica { flex: 1; }
         .ficha-tecnica h1 { font-size: 2.5rem; margin-top: 0; margin-bottom: 20px; font-weight: 400; }
         .ficha-tecnica p { margin: 8px 0; font-size: 0.95rem; color: var(--cor-cinza); }
@@ -94,30 +82,30 @@
            5. GALERIA DE IMAGENS (Grade Mosaico)
            ========================================================================== */
         .galeria {
-            max-width: 1200px;
-            margin: 0 auto 80px auto;
-            padding: 0 50px;
-            display: grid;
-            /* Cria uma grade base de 4 colunas */
-            grid-template-columns: repeat(4, 1fr);
-            /* Altura base de cada "bloco" da grade */
-            grid-auto-rows: 250px; 
-            /* Encaixa os itens menores nos espaços vazios deixados pelos maiores */
-            grid-auto-flow: dense; 
-            gap: 20px; 
+            max-width: 1200px; margin: 0 auto 80px auto; padding: 0 50px;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 250px; grid-auto-flow: dense; gap: 20px; 
+        }
+
+        /* Envolvemos a imagem numa div para controlar a grade */
+        .item-galeria {
+            width: 100%; height: 100%; overflow: hidden;
         }
 
         .galeria img {
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; /* Garante que a foto preencha o espaço sem achatar */
-            display: block;
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            cursor: pointer; /* Muda o mouse para a mãozinha indicando que é clicável */
+            transition: transform 0.3s ease;
         }
 
-        /* Classes para formatar o tamanho das fotos específicas */
-        .img-larga { grid-column: span 2; } /* Ocupa 2 colunas (Ideal para fotos horizontais) */
-        .img-alta { grid-row: span 2; }    /* Ocupa 2 linhas (Ideal para fotos verticais) */
-        .img-destaque { grid-column: span 2; grid-row: span 2; } /* Ocupa 2 colunas e 2 linhas (Ideal para destaque principal) */
+        .galeria img:hover {
+            transform: scale(1.03); /* Leve zoom ao passar o mouse */
+        }
+
+        /* Classes de tamanho para a grade */
+        .img-larga { grid-column: span 2; }
+        .img-alta { grid-row: span 2; }
+        .img-destaque { grid-column: span 2; grid-row: span 2; }
 
         /* ==========================================================================
            6. RODAPÉ 
@@ -130,15 +118,44 @@
         footer p { margin: 2px 0; color: var(--cor-cinza); }
 
         /* ==========================================================================
-           7. AJUSTES PARA RESPONSIVIDADE
+           7. MODAL (A JANELA QUE ABRE A FOTO GRANDE)
            ========================================================================== */
-        @media (max-width: 900px) {
-            .galeria {
-                grid-template-columns: repeat(2, 1fr); /* Reduz para 2 colunas em tablets */
-                grid-auto-rows: 200px;
-            }
+        .modal {
+            display: none; /* Escondido até você clicar */
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9); /* Fundo preto transparente */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-conteudo {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .fechar {
+            position: absolute;
+            top: 20px; right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .fechar:hover, .fechar:focus {
+            color: #bbb;
+            text-decoration: none;
         }
 
+        /* ==========================================================================
+           8. AJUSTES PARA RESPONSIVIDADE
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+        }
         @media (max-width: 768px) {
             .projeto-info { flex-direction: column; padding: 0 20px; gap: 30px; margin: 40px auto; }
             nav { height: auto; padding: 15px 20px; flex-direction: column; } 
@@ -147,17 +164,9 @@
             nav .logo img { max-height: 45px; }
             footer { grid-template-columns: 1fr; text-align: center; }
             
-            /* Ajustes da galeria para celular */
-            .galeria { 
-                padding: 0 20px; 
-                grid-template-columns: 1fr; /* Coluna única no celular */
-                grid-auto-rows: auto;
-            }
-            .galeria img {
-                grid-column: span 1 !important;
-                grid-row: span 1 !important;
-                aspect-ratio: 4/3; /* Mantém uma proporção agradável no mobile */
-            }
+            .galeria { padding: 0 20px; grid-template-columns: 1fr; grid-auto-rows: auto; }
+            .item-galeria { grid-column: span 1 !important; grid-row: span 1 !important; }
+            .galeria img { aspect-ratio: 4/3; }
         }
     </style>
 </head>
@@ -192,16 +201,14 @@
         </div>
     </section>
 
-    <!-- GALERIA COM CLASSES DE GRADE (MOSAICO) -->
+    <!-- GALERIA DE IMAGENS -->
     <section class="galeria">
-        <!-- Adicione as classes conforme as dimensões ideais de cada foto -->
-        <img src="Lavabo-J-N (2).png" alt="Lavabo" class="img-alta">
-        <img src="Sala de estar-J-N (1).png" alt="Sala de estar" class="img-destaque">
-        <img src="Lavabo-J-N (1).png" alt="Lavabo">
-        <img src="QUARTO J-N.png" alt="Quarto" class="img-larga">
-        <img src="Sala de estar-J-N (2).png" alt="Sala de estar">
-        <img src="Sala jantar- J-N (1).png" alt="Sala de jantar" class="img-larga">
-        <img src="Sala jantar- J-N (2).png" alt="Sala de jantar">
+        <div class="item-galeria img-alta"><img src="Lavabo-J-N (2).png" alt="Lavabo"></div>
+        <div class="item-galeria img-destaque"><img src="Sala de estar-J-N (1).png" alt="Sala de estar"></div>
+        <div class="item-galeria"><img src="Lavabo-J-N (1).png" alt="Lavabo"></div>
+        <div class="item-galeria img-larga"><img src="QUARTO J-N.png" alt="Quarto"></div>
+        <div class="item-galeria"><img src="Sala de estar-J-N (2).png" alt="Sala de estar"></div>
+        <div class="item-galeria img-larga"><img src="Sala jantar- J-N (1).png" alt="Sala de jantar"></div>
     </section>
 
     <footer id="contato">
@@ -216,6 +223,43 @@
             <p><a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: var(--cor-texto);">Instagram</a> | <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: var(--cor-texto);">WhatsApp</a></p>
         </div>
     </footer>
+
+    <!-- A ESTRUTURA INVISÍVEL DO MODAL -->
+    <div id="meuModal" class="modal">
+        <span class="fechar">&times;</span>
+        <img class="modal-conteudo" id="imagemAmpliada">
+    </div>
+
+    <!-- O SCRIPT QUE FAZ O CLIQUE FUNCIONAR -->
+    <script>
+        // Pega os elementos do modal
+        var modal = document.getElementById("meuModal");
+        var imgModal = document.getElementById("imagemAmpliada");
+        var spanFechar = document.getElementsByClassName("fechar")[0];
+        
+        // Pega todas as imagens dentro da galeria
+        var imagens = document.querySelectorAll(".galeria img");
+
+        // Quando o usuário clicar em uma imagem, abre o modal
+        imagens.forEach(function(img) {
+            img.onclick = function(){
+                modal.style.display = "flex"; // Mostra o modal
+                imgModal.src = this.src; // Coloca a mesma foto que foi clicada no modal
+            }
+        });
+
+        // Quando o usuário clicar no (x), fecha o modal
+        spanFechar.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Quando o usuário clicar em qualquer lugar escuro fora da foto, fecha também
+        modal.onclick = function(evento) {
+            if (evento.target !== imgModal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
