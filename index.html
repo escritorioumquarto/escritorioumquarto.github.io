@@ -3,42 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umquarto | Escritório de arquitetura</title>
+    <title>Projeto | Umquarto</title>
     
+    <!-- Link para o CSS da Lightbox2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
     <style>
         /* ==========================================================================
-           🎨 CORES DO SITE: Mude os códigos # aqui para alterar as cores de tudo
+           1. CORES E FONTES GLOBAIS 
            ========================================================================== */
         :root {
-            --cor-fundo: #ffffff;      
-            --cor-texto: #1a1a1a;      
-            --cor-rodape: #f4f4f4;     
+            --cor-fundo: #ffffff;
+            --cor-texto: #1a1a1a;
+            --cor-rodape: #f4f4f4;
+            --cor-cinza: #666666;
         }
 
-        /* ==========================================================================
-           ⚙️ CONFIGURAÇÕES GERAIS 
-           ========================================================================== */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-        
+
         * {
             font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box; 
+            box-sizing: border-box;
         }
 
         body, html {
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
             scroll-behavior: smooth;
         }
 
         /* ==========================================================================
-           📱 MENU SUPERIOR E LOGO 
+           2. MENU SUPERIOR 
            ========================================================================== */
         nav {
             position: fixed;        
             top: 0; width: 100%;
-            height: 80px; /* ALTURA FIXA DA BARRA BRANCA */
+            height: 80px;
             padding: 0 50px; 
             display: flex; justify-content: space-between; align-items: center;
             background-color: rgba(255, 255, 255, 0.95); 
@@ -47,156 +49,191 @@
 
         nav .logo { display: flex; align-items: center; }
 
-        /* 📏 TAMANHO DA LOGO */
         nav .logo img {
             max-height: 55px; 
             width: auto;
             object-fit: contain;
         }
 
-        /* Textos do menu (Sobre, Projetos, Contato) */
-        nav .menu-links a {
-            text-decoration: none; color: var(--cor-texto);
-            margin-left: 30px; font-size: 14px; font-weight: 500;
-            text-transform: uppercase; transition: 0.3s;
+        nav .menu-links a { 
+            text-decoration: none; color: var(--cor-texto); margin-left: 30px; font-size: 14px; font-weight: 500; text-transform: uppercase; transition: 0.3s;
         }
         nav .menu-links a:hover { opacity: 0.5; }
 
         /* ==========================================================================
-           🖼️ CAPA PRINCIPAL (FOTO GRANDE)
+           3. CAPA HORIZONTAL DO PROJETO
            ========================================================================== */
-        .hero {
-            height: 100vh;
-            display: flex; align-items: center; justify-content: center; text-align: center;
-            padding-top: 80px; /* Espaço exato da altura da barra para não tampar a foto */
-            
-            /* 📸 FOTO DE CAPA ATUALIZADA */
-            background-image: url('Capa.png');
-            background-size: cover; 
-            background-position: center; 
+        .projeto-hero {
+            margin-top: 80px;       
+            width: 100%;
+            height: 70vh;           
+        }
+        .projeto-hero img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;      
         }
 
         /* ==========================================================================
-           📝 SEÇÃO "SOBRE"
+           4. SEÇÃO DE TEXTOS
            ========================================================================== */
-        .manifesto {
-            padding: 100px 20px; max-width: 800px; margin: 0 auto; text-align: center;
+        .projeto-info {
+            display: flex;          
+            max-width: 1200px;
+            margin: 80px auto;      
+            padding: 0 50px;
+            gap: 50px;              
         }
-        .manifesto h2 { font-size: 2rem; font-weight: 400; margin-bottom: 30px; }
-        .manifesto p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; color: #555555; }
+
+        .ficha-tecnica { flex: 1; }
+        .ficha-tecnica h1 { font-size: 2.5rem; margin-top: 0; margin-bottom: 20px; font-weight: 400; }
+        .ficha-tecnica p { margin: 8px 0; font-size: 0.95rem; color: var(--cor-cinza); }
+        .ficha-tecnica span { font-weight: 600; color: var(--cor-texto); }
+
+        .descricao { flex: 2; }
+        .descricao p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; margin-top: 0; margin-bottom: 20px; }
 
         /* ==========================================================================
-           🏢 GALERIA DE PROJETOS
+           5. GALERIA DE IMAGENS (Grade Mosaico)
            ========================================================================== */
-        .projetos {
+        .galeria {
+            max-width: 1200px;
+            margin: 0 auto 80px auto;
+            padding: 0 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 5px; padding: 5px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 250px; 
+            grid-auto-flow: dense; 
+            gap: 20px; 
         }
-        .link-projeto { text-decoration: none; color: inherit; display: block; }
-        .projeto-item {
-            position: relative; height: 400px; overflow: hidden; cursor: pointer;
+
+        /* Os links que envolvem as imagens agora controlam o tamanho */
+        .galeria a {
+            width: 100%; 
+            height: 100%; 
+            display: block;
+            overflow: hidden; /* Garante que a imagem não saia do link */
         }
-        .projeto-item img {
-            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+
+        .galeria img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease; /* Efeito suave no hover */
         }
-        
-        .projeto-item .overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.65);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.4s ease; color: white; text-align: center;
+
+        .galeria a:hover img {
+            transform: scale(1.05); /* Pequeno zoom ao passar o mouse */
         }
-        
-        .projeto-item:hover img { transform: scale(1.05); } 
-        .projeto-item:hover .overlay { opacity: 1; } 
-        
-        .overlay h3 { font-size: 1.8rem; margin: 0 0 10px 0; font-weight: 400; }
-        .overlay p { margin: 0; font-weight: 300; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Classes de tamanho para os links da galeria */
+        .img-larga { grid-column: span 2; }
+        .img-alta { grid-row: span 2; }
+        .img-destaque { grid-column: span 2; grid-row: span 2; }
 
         /* ==========================================================================
-           📞 RODAPÉ
+           6. RODAPÉ 
            ========================================================================== */
         footer {
             background-color: var(--cor-rodape);
             padding: 60px 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; font-size: 0.9rem;
         }
-        /* Ajuste de margens para aproximar os textos do rodapé */
         footer h4 { margin: 0 0 5px 0; font-size: 1.2rem; }
-        footer p { margin: 2px 0; color: #666666; }
+        footer p { margin: 2px 0; color: var(--cor-cinza); }
 
         /* ==========================================================================
-           📱 AJUSTES PARA CELULAR
+           7. AJUSTES PARA RESPONSIVIDADE
            ========================================================================== */
+        @media (max-width: 900px) {
+            .galeria {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .projeto-info { flex-direction: column; padding: 0 20px; gap: 30px; margin: 40px auto; }
             nav { height: auto; padding: 15px 20px; flex-direction: column; } 
             nav .menu-links { margin-top: 15px; }
             nav .menu-links a { margin: 0 10px; }
             nav .logo img { max-height: 45px; }
-            .projetos { grid-template-columns: 1fr; }
             footer { grid-template-columns: 1fr; text-align: center; }
+            
+            .galeria { 
+                padding: 0 20px; 
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+            .galeria a {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+            .galeria img {
+                aspect-ratio: 4/3;
+            }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo">
-            <img src="LOGO-03.png" alt="Logo Seu Estúdio">
+        <a href="index.html" class="logo">
+            <img src="LOGO-03.png" alt="Logo Umquarto">
         </a>
         <div class="menu-links">
-            <a href="#sobre">Sobre</a>
-            <a href="#projetos">Projetos</a>
+            <a href="index.html#sobre">Sobre</a>
+            <a href="index.html#projetos">Projetos</a>
             <a href="#contato">Contato</a>
         </div>
     </nav>
 
-    <header class="hero">
-    </header>
-
-    <section id="sobre" class="manifesto">
-        <h2>Quem somos</h2>
-        <p>A UmQuarto nasceu na graduação, em Belo Horizonte, quando percebemos que nossa conexão ia além dos trabalhos acadêmicos: existia ali uma profunda afinidade criativa e uma visão em comum sobre arquitetura, arte e experiência. 
-Após o diploma, decidimos transformar o sonho em realidade para construir nosso próprio caminho - primeiro com pequenos projetos, depois abrindo espaço para novas oportunidades, pessoas e histórias.
-O nome carrega o simbolismo de um ambiente, mas também uma fração. Entendemos que um projeto nasce da união de quatro elementos: o espaço, a necessidade, o usuário e a técnica. 
-
-Somos o 1/4 técnico e criativo dessa equação, a parte dedicada a transformar uma ideia em realidade.</p>
+    <section class="projeto-hero">
+        <img src="Sala de estar-J-N (1).png" alt="Capa">
     </section>
 
-    <section id="projects-section" class="projetos">
-        
-        <!-- PROJETO 1: R|J -->
-        <a href="reforma-rita-jose.html" class="link-projeto">
-            <div class="projeto-item">
-                <img src="Reforma Rita e José.png" alt="Reforma R|J">
-                <div class="overlay">
-                    <h3>Reforma R/J</h3>
-                    <p>Projeto Residencial</p>
-                </div>
-            </div>
-        </a>
+    <section class="projeto-info">
+        <div class="ficha-tecnica">
+            <h1>Reforma J/N</h1>
+            <p><span>Escopo:</span> Projeto Residencial</p>
+            <p><span>Local:</span> Belo Horizonte, MG</p>
+            <p><span>Ano:</span> 2026</p>
+            <p><span>Status:</span> Em desenvolvimento</p>
+        </div>
 
-        <!-- PROJETO 2: J|N -->
-        <a href="reforma-casa joão.html" class="link-projeto">
-            <div class="projeto-item">
-                <img src="Sala de estar-J-N (1).png" alt="Reforma J|N">
-                <div class="overlay">
-                    <h3>Reforma J/N</h3>
-                     <p>Projeto Residencial</p>
-                </div>
-            </div>
-        </a>
+        <div class="descricao">
+            <p> Transformamos um apartamento com acabamentos padrão em um lar funcional e com personalidade para duas pessoas. A área social ganhou uma atmosfera intimista: a sala de estar recebeu piso vinílico e iluminação indireta, enquanto o jantar para seis lugares destaca um armário afetivo revitalizado. O quarto, antes subaproveitado, tornou-se um espaço inteligente que equilibra descanso e home office. Por fim, o lavabo perdeu o visual de construtora e ganhou uma identidade marcante. Um projeto que une design contemporâneo e bem-estar.</p>
+        </div>
+    </section>
 
-        <!-- PROJETO 3: Em desenvolvimento -->
-        <a href="#" class="link-projeto">
-            <div class="projeto-item">
-                <img src="em desenvol-2.jpg" alt="Projeto em Desenvolvimento">
-                <div class="overlay">
-                    <h3>indisponível</h3>
-                </div>
-            </div>
+    <!-- GALERIA COM LINKS PARA LIGHTBOX -->
+    <section class="galeria">
+        <!-- 
+           Cada link <a> deve ter:
+           1. href="link-da-imagem-grande.png"
+           2. data-lightbox="nome-da-galeria" (para agrupar e navegar entre elas)
+        -->
+        <a href="Lavabo-J-N (2).png" data-lightbox="projeto-jn" class="img-alta">
+            <img src="Lavabo-J-N (2).png" alt="Lavabo">
         </a>
-
+        <a href="Sala de estar-J-N (1).png" data-lightbox="projeto-jn" class="img-destaque">
+            <img src="Sala de estar-J-N (1).png" alt="Sala de estar">
+        </a>
+        <a href="Lavabo-J-N (1).png" data-lightbox="projeto-jn">
+            <img src="Lavabo-J-N (1).png" alt="Lavabo">
+        </a>
+        <a href="QUARTO J-N.png" data-lightbox="projeto-jn" class="img-larga">
+            <img src="QUARTO J-N.png" alt="Quarto">
+        </a>
+        <a href="Sala de estar-J-N (2).png" data-lightbox="projeto-jn">
+            <img src="Sala de estar-J-N (2).png" alt="Sala de estar">
+        </a>
+        <a href="Sala jantar- J-N (1).png" data-lightbox="projeto-jn" class="img-larga">
+            <img src="Sala jantar- J-N (1).png" alt="Sala de jantar">
+        </a>
+        <a href="Sala jantar- J-N (2).png" data-lightbox="projeto-jn">
+            <img src="Sala jantar- J-N (2).png" alt="Sala de jantar">
+        </a>
     </section>
 
     <footer id="contato">
@@ -208,9 +245,13 @@ Somos o 1/4 técnico e criativo dessa equação, a parte dedicada a transformar 
             <p>atendimento online SP | BH</p>
             <p>escritorioumquarto@gmail.com</p>
             <p>31 8369 1908</p>
-            <p><a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: #1a1a1a;">Instagram</a> | <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: #1a1a1a;">WhatsApp</a></p>
+            <p><a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: var(--cor-texto);">Instagram</a> | <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: var(--cor-texto);">WhatsApp</a></p>
         </div>
     </footer>
+
+    <!-- Scripts necessários para a Lightbox2 funcionar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
 </body>
 </html>
