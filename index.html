@@ -3,41 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto | Umquarto</title>
+    <title>Umquarto | Escritório de arquitetura</title>
     
     <style>
         /* ==========================================================================
-           1. CORES E FONTES GLOBAIS 
+           🎨 CORES DO SITE: Mude os códigos # aqui para alterar as cores de tudo
            ========================================================================== */
         :root {
-            --cor-fundo: #ffffff;
-            --cor-texto: #1a1a1a;
-            --cor-rodape: #f4f4f4;
-            --cor-cinza: #666666;
+            --cor-fundo: #ffffff;      
+            --cor-texto: #1a1a1a;      
+            --cor-rodape: #f4f4f4;     
         }
 
+        /* ==========================================================================
+           ⚙️ CONFIGURAÇÕES GERAIS 
+           ========================================================================== */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-
+        
         * {
             font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
+            box-sizing: border-box; 
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
             scroll-behavior: smooth;
         }
 
         /* ==========================================================================
-           2. MENU SUPERIOR 
+           📱 MENU SUPERIOR E LOGO 
            ========================================================================== */
         nav {
             position: fixed;        
             top: 0; width: 100%;
-            height: 80px;
+            height: 80px; /* ALTURA FIXA DA BARRA BRANCA */
             padding: 0 50px; 
             display: flex; justify-content: space-between; align-items: center;
             background-color: rgba(255, 255, 255, 0.95); 
@@ -45,170 +46,156 @@
         }
 
         nav .logo { display: flex; align-items: center; }
-        nav .logo img { max-height: 55px; width: auto; object-fit: contain; }
 
-        nav .menu-links a { 
-            text-decoration: none; color: var(--cor-texto); margin-left: 30px; font-size: 14px; font-weight: 500; text-transform: uppercase; transition: 0.3s;
+        /* 📏 TAMANHO DA LOGO */
+        nav .logo img {
+            max-height: 55px; 
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Textos do menu (Sobre, Projetos, Contato) */
+        nav .menu-links a {
+            text-decoration: none; color: var(--cor-texto);
+            margin-left: 30px; font-size: 14px; font-weight: 500;
+            text-transform: uppercase; transition: 0.3s;
         }
         nav .menu-links a:hover { opacity: 0.5; }
 
         /* ==========================================================================
-           3. CAPA HORIZONTAL DO PROJETO
+           🖼️ CAPA PRINCIPAL (FOTO GRANDE)
            ========================================================================== */
-        .projeto-hero {
-            margin-top: 80px;       
-            width: 100%;
-            height: 70vh;           
-        }
-        .projeto-hero img {
-            width: 100%; height: 100%; object-fit: cover;      
+        .hero {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding-top: 80px; /* Espaço exato da altura da barra para não tampar a foto */
+            
+            /* 📸 FOTO DE CAPA ATUALIZADA */
+            background-image: url('Capa.png');
+            background-size: cover; 
+            background-position: center; 
         }
 
         /* ==========================================================================
-           4. SEÇÃO DE TEXTOS
+           📝 SEÇÃO "SOBRE"
            ========================================================================== */
-        .projeto-info {
-            display: flex; max-width: 1200px; margin: 80px auto; padding: 0 50px; gap: 50px;              
+        .manifesto {
+            padding: 100px 20px; max-width: 800px; margin: 0 auto; text-align: center;
         }
-        .ficha-tecnica { flex: 1; }
-        .ficha-tecnica h1 { font-size: 2.5rem; margin-top: 0; margin-bottom: 20px; font-weight: 400; }
-        .ficha-tecnica p { margin: 8px 0; font-size: 0.95rem; color: var(--cor-cinza); }
-        .ficha-tecnica span { font-weight: 600; color: var(--cor-texto); }
-
-        .descricao { flex: 2; }
-        .descricao p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; margin-top: 0; margin-bottom: 20px; }
+        .manifesto h2 { font-size: 2rem; font-weight: 400; margin-bottom: 30px; }
+        .manifesto p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; color: #555555; }
 
         /* ==========================================================================
-           5. GALERIA DE IMAGENS (Grade Mosaico)
+           🏢 GALERIA DE PROJETOS
            ========================================================================== */
-        .galeria {
-            max-width: 1200px; margin: 0 auto 80px auto; padding: 0 50px;
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 250px; grid-auto-flow: dense; gap: 20px; 
+        .projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 5px; padding: 5px;
         }
-
-        /* Envolvemos a imagem numa div para controlar a grade */
-        .item-galeria {
-            width: 100%; height: 100%; overflow: hidden;
+        .link-projeto { text-decoration: none; color: inherit; display: block; }
+        .projeto-item {
+            position: relative; height: 400px; overflow: hidden; cursor: pointer;
         }
-
-        .galeria img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-            cursor: pointer; /* Muda o mouse para a mãozinha indicando que é clicável */
-            transition: transform 0.3s ease;
+        .projeto-item img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
         }
-
-        .galeria img:hover {
-            transform: scale(1.03); /* Leve zoom ao passar o mouse */
+        
+        .projeto-item .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.4s ease; color: white; text-align: center;
         }
-
-        /* Classes de tamanho para a grade */
-        .img-larga { grid-column: span 2; }
-        .img-alta { grid-row: span 2; }
-        .img-destaque { grid-column: span 2; grid-row: span 2; }
+        
+        .projeto-item:hover img { transform: scale(1.05); } 
+        .projeto-item:hover .overlay { opacity: 1; } 
+        
+        .overlay h3 { font-size: 1.8rem; margin: 0 0 10px 0; font-weight: 400; }
+        .overlay p { margin: 0; font-weight: 300; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
         /* ==========================================================================
-           6. RODAPÉ 
+           📞 RODAPÉ
            ========================================================================== */
         footer {
             background-color: var(--cor-rodape);
             padding: 60px 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; font-size: 0.9rem;
         }
+        /* Ajuste de margens para aproximar os textos do rodapé */
         footer h4 { margin: 0 0 5px 0; font-size: 1.2rem; }
-        footer p { margin: 2px 0; color: var(--cor-cinza); }
+        footer p { margin: 2px 0; color: #666666; }
 
         /* ==========================================================================
-           7. MODAL (A JANELA QUE ABRE A FOTO GRANDE)
+           📱 AJUSTES PARA CELULAR
            ========================================================================== */
-        .modal {
-            display: none; /* Escondido até você clicar */
-            position: fixed;
-            z-index: 2000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9); /* Fundo preto transparente */
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-conteudo {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-        .fechar {
-            position: absolute;
-            top: 20px; right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .fechar:hover, .fechar:focus {
-            color: #bbb;
-            text-decoration: none;
-        }
-
-        /* ==========================================================================
-           8. AJUSTES PARA RESPONSIVIDADE
-           ========================================================================== */
-        @media (max-width: 900px) {
-            .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
-        }
         @media (max-width: 768px) {
-            .projeto-info { flex-direction: column; padding: 0 20px; gap: 30px; margin: 40px auto; }
             nav { height: auto; padding: 15px 20px; flex-direction: column; } 
             nav .menu-links { margin-top: 15px; }
             nav .menu-links a { margin: 0 10px; }
             nav .logo img { max-height: 45px; }
+            .projetos { grid-template-columns: 1fr; }
             footer { grid-template-columns: 1fr; text-align: center; }
-            
-            .galeria { padding: 0 20px; grid-template-columns: 1fr; grid-auto-rows: auto; }
-            .item-galeria { grid-column: span 1 !important; grid-row: span 1 !important; }
-            .galeria img { aspect-ratio: 4/3; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">
-            <img src="LOGO-03.png" alt="Logo Umquarto">
+        <a href="#" class="logo">
+            <img src="LOGO-03.png" alt="Logo Seu Estúdio">
         </a>
         <div class="menu-links">
-            <a href="index.html#sobre">Sobre</a>
-            <a href="index.html#projetos">Projetos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
             <a href="#contato">Contato</a>
         </div>
     </nav>
 
-    <section class="projeto-hero">
-        <img src="Sala de estar-J-N (1).png" alt="Capa">
+    <header class="hero">
+    </header>
+
+    <section id="sobre" class="manifesto">
+        <h2>Quem somos</h2>
+        <p>A UmQuarto nasceu na graduação, em Belo Horizonte, quando percebemos que nossa conexão ia além dos trabalhos acadêmicos: existia ali uma profunda afinidade criativa e uma visão em comum sobre arquitetura, arte e experiência. 
+Após o diploma, decidimos transformar o sonho em realidade para construir nosso próprio caminho - primeiro com pequenos projetos, depois abrindo espaço para novas oportunidades, pessoas e histórias.
+O nome carrega o simbolismo de um ambiente, mas também uma fração. Entendemos que um projeto nasce da união de quatro elementos: o espaço, a necessidade, o usuário e a técnica. 
+
+Somos o 1/4 técnico e criativo dessa equação, a parte dedicada a transformar uma ideia em realidade.</p>
     </section>
 
-    <section class="projeto-info">
-        <div class="ficha-tecnica">
-            <h1>Reforma J/N</h1>
-            <p><span>Escopo:</span> Projeto Residencial</p>
-            <p><span>Local:</span> Belo Horizonte, MG</p>
-            <p><span>Ano:</span> 2026</p>
-            <p><span>Status:</span> Em desenvolvimento</p>
-        </div>
+    <section id="projects-section" class="projetos">
+        
+        <!-- PROJETO 1: Único disponível -->
+        <a href="reforma-rita-jose.html" class="link-projeto">
+            <div class="projeto-item">
+                <img src="Reforma Rita e José.png" alt="Reforma Rita e José">
+                <div class="overlay">
+                    <h3>Reforma R/J</h3>
+                    <p>Projeto Residencial</p>
+                </div>
+            </div>
+        </a>
 
-        <div class="descricao">
-            <p> Transformamos um apartamento com acabamentos padrão em um lar funcional e com personalidade para duas pessoas. A área social ganhou uma atmosfera intimista: a sala de estar recebeu piso vinílico e iluminação indireta, enquanto o jantar para seis lugares destaca um armário afetivo revitalizado. O quarto, antes subaproveitado, tornou-se um espaço inteligente que equilibra descanso e home office. Por fim, o lavabo perdeu o visual de construtora e ganhou uma identidade marcante. Um projeto que une design contemporâneo e bem-estar.</p>
-        </div>
-    </section>
+        <!-- PROJETO 2: Em desenvolvimento -->
+        <a href="#" class="link-projeto">
+            <div class="projeto-item">
+                <img src="em desenvol-1.jpg" alt="Projeto em Desenvolvimento">
+                <div class="overlay">
+                    <h3>indisponível</h3>
+                </div>
+            </div>
+        </a>
 
-    <!-- GALERIA DE IMAGENS -->
-    <section class="galeria">
-        <div class="item-galeria img-alta"><img src="Lavabo-J-N (2).png" alt="Lavabo"></div>
-        <div class="item-galeria img-destaque"><img src="Sala de estar-J-N (1).png" alt="Sala de estar"></div>
-        <div class="item-galeria"><img src="Lavabo-J-N (1).png" alt="Lavabo"></div>
-        <div class="item-galeria img-larga"><img src="QUARTO J-N.png" alt="Quarto"></div>
-        <div class="item-galeria"><img src="Sala de estar-J-N (2).png" alt="Sala de estar"></div>
-        <div class="item-galeria img-larga"><img src="Sala jantar- J-N (1).png" alt="Sala de jantar"></div>
+        <!-- PROJETO 3: Em desenvolvimento -->
+        <a href="#" class="link-projeto">
+            <div class="projeto-item">
+                <img src="em desenvol-2.jpg" alt="Projeto em Desenvolvimento">
+                <div class="overlay">
+                    <h3>indisponível</h3>
+                </div>
+            </div>
+        </a>
+
     </section>
 
     <footer id="contato">
@@ -220,46 +207,9 @@
             <p>atendimento online SP | BH</p>
             <p>escritorioumquarto@gmail.com</p>
             <p>31 8369 1908</p>
-            <p><a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: var(--cor-texto);">Instagram</a> | <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: var(--cor-texto);">WhatsApp</a></p>
+            <p><a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: #1a1a1a;">Instagram</a> | <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: #1a1a1a;">WhatsApp</a></p>
         </div>
     </footer>
-
-    <!-- A ESTRUTURA INVISÍVEL DO MODAL -->
-    <div id="meuModal" class="modal">
-        <span class="fechar">&times;</span>
-        <img class="modal-conteudo" id="imagemAmpliada">
-    </div>
-
-    <!-- O SCRIPT QUE FAZ O CLIQUE FUNCIONAR -->
-    <script>
-        // Pega os elementos do modal
-        var modal = document.getElementById("meuModal");
-        var imgModal = document.getElementById("imagemAmpliada");
-        var spanFechar = document.getElementsByClassName("fechar")[0];
-        
-        // Pega todas as imagens dentro da galeria
-        var imagens = document.querySelectorAll(".galeria img");
-
-        // Quando o usuário clicar em uma imagem, abre o modal
-        imagens.forEach(function(img) {
-            img.onclick = function(){
-                modal.style.display = "flex"; // Mostra o modal
-                imgModal.src = this.src; // Coloca a mesma foto que foi clicada no modal
-            }
-        });
-
-        // Quando o usuário clicar no (x), fecha o modal
-        spanFechar.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Quando o usuário clicar em qualquer lugar escuro fora da foto, fecha também
-        modal.onclick = function(evento) {
-            if (evento.target !== imgModal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 
 </body>
 </html>
