@@ -14,9 +14,17 @@
             --cor-texto: #1a1a1a;
             --cor-rodape: #f4f4f4;
             --cor-cinza: #666666; /* Tom de cinza para detalhes menores */
+            
+            /* Variáveis trazidas da página inicial para padronizar Menu e Rodapé */
+            --cor-destaque: #333333; 
+            --cor-destaque-hover: #000000; 
+            --cor-fundo-menu: rgba(255, 255, 255, 0.95);
+            --tamanho-menu-links: 14px;
+            --tamanho-rodape-texto: 0.9rem;
+            --img-logo: url('LOGO-03.png');
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
         * {
             font-family: 'Montserrat', sans-serif;
@@ -32,80 +40,80 @@
         }
 
         /* ==========================================================================
-           2. MENU SUPERIOR 
+           2. MENU SUPERIOR (Atualizado)
            ========================================================================== */
-        nav {
-            position: fixed;        
-            top: 0; width: 100%;
-            height: 80px; /* ALTURA FIXA DA BARRA BRANCA */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            height: 80px; 
             padding: 0 50px; 
-            display: flex; justify-content: space-between; align-items: center;
-            background-color: rgba(255, 255, 255, 0.95); 
-            z-index: 1000; border-bottom: 1px solid #eaeaea;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: var(--cor-fundo-menu); 
+            z-index: 1000; 
+            border-bottom: 1px solid #eaeaea; 
         }
-
-        nav .logo { display: flex; align-items: center; }
-
-        /* 📏 TAMANHO DA LOGO */
-        nav .logo img {
-            max-height: 55px; 
-            width: auto;
-            object-fit: contain;
+        nav .logo { display: flex; align-items: center; text-decoration: none; }
+        nav .logo .img-logo { 
+            background-image: var(--img-logo); 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: left center; 
+            height: 55px; 
+            width: 200px; 
         }
-
-        /* Os links mandam o usuário de volta para os blocos corretos da home */
+        nav .menu-links { display: flex; align-items: center; gap: 30px; }
         nav .menu-links a { 
-            text-decoration: none; color: var(--cor-texto); margin-left: 30px; font-size: 14px; font-weight: 500; text-transform: uppercase; transition: 0.3s;
+            text-decoration: none; 
+            color: var(--cor-texto); 
+            font-size: var(--tamanho-menu-links); 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            transition: 0.3s; 
         }
-        nav .menu-links a:hover { opacity: 0.5; }
+        nav .menu-links a:hover { color: var(--cor-destaque); }
+        .btn-menu { 
+            background-color: var(--cor-destaque); 
+            color: #fff !important; 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            font-weight: 700 !important; 
+        }
+        .btn-menu:hover { background-color: var(--cor-destaque-hover) !important; color: white !important; }
 
         /* ==========================================================================
            3. CAPA HORIZONTAL DO PROJETO
            ========================================================================== */
         .projeto-hero {
-            margin-top: 80px;       /* Cria espaço exato da barra fixa */
+            margin-top: 80px;        
             width: 100%;
-            height: 70vh;           /* Ocupa 70% da altura da tela */
+            height: 70vh;            
         }
         .projeto-hero img {
             width: 100%; 
             height: 100%; 
-            object-fit: cover;      /* Garante o enquadramento sem achatar a foto */
+            object-fit: cover;      
         }
 
         /* ==========================================================================
-           4. SEÇÃO DE TEXTOS: FICHA TÉCNICA À ESQUERDA E DESCRIÇÃO À DIREITA
+           4. SEÇÃO DE TEXTOS
            ========================================================================== */
         .projeto-info {
-            display: flex;          /* Ativa o modo de colunas lado a lado */
+            display: flex;          
             max-width: 1200px;
-            margin: 80px auto;      /* Centraliza o bloco e cria espaço em cima e embaixo */
+            margin: 80px auto;      
             padding: 0 50px;
-            gap: 50px;              /* Espaço grande de separação entre as duas colunas */
+            gap: 50px;              
         }
+        .ficha-tecnica { flex: 1; }
+        .ficha-tecnica h1 { font-size: 2.5rem; margin-top: 0; margin-bottom: 20px; font-weight: 700; }
+        .ficha-tecnica p { margin: 8px 0; font-size: 0.95rem; color: var(--cor-cinza); }
+        .ficha-tecnica span { font-weight: 600; color: var(--cor-texto); }
 
-        /* Coluna da esquerda (Ficha técnica) */
-        .ficha-tecnica {
-            flex: 1;                /* Ocupa 1 "fatia" do espaço proporcional */
-        }
-        .ficha-tecnica h1 {
-            font-size: 2.5rem; margin-top: 0; margin-bottom: 20px; font-weight: 400;
-        }
-        .ficha-tecnica p {
-            margin: 8px 0; font-size: 0.95rem; color: var(--cor-cinza);
-        }
-        /* Destaca as palavras-chave em negrito preto */
-        .ficha-tecnica span { 
-            font-weight: 600; color: var(--cor-texto); 
-        }
-
-        /* Coluna da direita (Texto explicativo do projeto) */
-        .descricao {
-            flex: 2;                /* Ocupa 2 "fatias" do espaço (é duas vezes mais larga que a ficha) */
-        }
-        .descricao p {
-            font-size: 1.1rem; line-height: 1.8; font-weight: 300; margin-top: 0; margin-bottom: 20px;
-        }
+        .descricao { flex: 2; }
+        .descricao p { font-size: 1.1rem; line-height: 1.8; font-weight: 400; margin-top: 0; margin-bottom: 20px; }
 
         /* ==========================================================================
            5. GALERIA DE IMAGENS (Grade Mosaico)
@@ -121,7 +129,6 @@
             gap: 20px; 
         }
 
-        /* Envolvemos a imagem numa div para controlar a grade */
         .item-galeria {
             width: 100%; 
             height: 100%; 
@@ -133,35 +140,45 @@
             height: 100%; 
             object-fit: cover; 
             display: block;
-            cursor: pointer; /* Muda o mouse para a mãozinha indicando que é clicável */
+            cursor: pointer; 
             transition: transform 0.3s ease;
         }
 
         .galeria img:hover {
-            transform: scale(1.03); /* Leve zoom ao passar o mouse */
+            transform: scale(1.03); 
         }
 
-        /* Classes de tamanho para a grade */
         .img-larga { grid-column: span 2; }
         .img-alta { grid-row: span 2; }
         .img-destaque { grid-column: span 2; grid-row: span 2; }
 
         /* ==========================================================================
-           6. RODAPÉ 
+           6. RODAPÉ (Atualizado)
            ========================================================================== */
-        footer {
-            background-color: var(--cor-rodape);
-            padding: 60px 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; font-size: 0.9rem;
+        footer { 
+            background-color: var(--cor-rodape); 
+            padding: 60px 50px; 
+            display: block; 
+            font-size: var(--tamanho-rodape-texto); 
         }
-        /* Ajuste de margens para aproximar os textos do rodapé */
-        footer h4 { margin: 0 0 5px 0; font-size: 1.2rem; }
-        footer p { margin: 2px 0; color: var(--cor-cinza); }
 
         /* ==========================================================================
-           7. MODAL (A JANELA QUE ABRE A FOTO GRANDE)
+           7. WHATSAPP FLUTUANTE (Adicionado da página inicial)
+           ========================================================================== */
+        .whatsapp-flutuante { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; align-items: center; z-index: 9999; text-decoration: none; }
+        .whatsapp-tooltip { background: #ffffff; color: var(--cor-texto); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 6px; }
+        .whatsapp-tooltip .bolinha { width: 8px; height: 8px; background-color: #25D366; border-radius: 50%; animation: pulsar 2s infinite; }
+        .whatsapp-icon { background-color: #25D366; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: transform 0.3s; }
+        .whatsapp-icon:hover { transform: scale(1.1); }
+        .whatsapp-icon svg { width: 35px; height: 35px; fill: #ffffff; }
+
+        @keyframes pulsar { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
+
+        /* ==========================================================================
+           8. MODAL (A JANELA QUE ABRE A FOTO GRANDE)
            ========================================================================== */
         .modal {
-            display: none; /* Escondido até clicar */
+            display: none; 
             position: fixed;
             z-index: 2000;
             left: 0; top: 0;
@@ -191,20 +208,19 @@
         }
 
         /* ==========================================================================
-           8. AJUSTES PARA CELULAR
+           9. AJUSTES PARA CELULAR
            ========================================================================== */
         @media (max-width: 900px) {
             .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
         }
 
         @media (max-width: 768px) {
-            /* No celular, a Ficha Técnica e a Descrição ficam uma embaixo da outra */
             .projeto-info { flex-direction: column; padding: 0 20px; gap: 30px; margin: 40px auto; }
             nav { height: auto; padding: 15px 20px; flex-direction: column; } 
-            nav .menu-links { margin-top: 15px; }
-            nav .menu-links a { margin: 0 10px; }
-            nav .logo img { max-height: 45px; }
-            footer { grid-template-columns: 1fr; text-align: center; }
+            nav .menu-links { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 15px;} 
+            
+            footer { text-align: center; } 
+            footer div { text-align: center !important; margin: 0 auto; max-width: 100% !important; }
             
             .galeria { padding: 0 20px; grid-template-columns: 1fr; grid-auto-rows: auto; }
             .item-galeria { grid-column: span 1 !important; grid-row: span 1 !important; }
@@ -214,14 +230,14 @@
 </head>
 <body>
 
+    <!-- MENU (Atualizado e apontando para index.html) -->
     <nav>
-        <a href="index.html" class="logo">
-            <img src="LOGO-03.png" alt="Logo Umquarto">
-        </a>
+        <a href="index.html" class="logo"><div class="img-logo"></div></a>
         <div class="menu-links">
-            <a href="index.html#sobre">Sobre</a>
-            <a href="index.html#projetos">Projetos</a>
-            <a href="#contato">Contato</a>
+            <a href="index.html#sobre">Nossa Essência</a>
+            <a href="index.html#projetos">Portfólio</a>
+            <a href="index.html#servicos">O que fazemos</a>
+            <a href="index.html#orcamento" class="btn-menu">Falar com Arquiteto</a>
         </div>
     </nav>
 
@@ -231,7 +247,6 @@
 
     <section class="projeto-info">
         <div class="ficha-tecnica">
-            <!-- O <br> é responsável por quebrar a linha do título -->
             <h1>Reforma R/J</h1>
             <p><span>Escopo:</span> Projeto Residencial</p>
             <p><span>Local:</span> Sete Lagoas, MG</p>
@@ -242,12 +257,11 @@
         <div class="descricao">
             <p> Desenvolvida para uma família de cinco pessoas e seu cachorro, este projeto de reforma teve como objetivo otimizar os espaços e valorizar a convivência familiar. A intervenção ampliou e integrou a sala de estar e a cozinha, criando uma área social mais funcional e acolhedora para o dia a dia e para receber familiares e amigos. 
                 
-                O projeto também reorganizou a área de serviço e o escritório,  proporcionando maior aproveitamento dos ambientes e atendendo melhor às necessidades dos moradores.</p>
-        
+                O projeto também reorganizou a área de serviço e o escritório, proporcionando maior aproveitamento dos ambientes e atendendo melhor às necessidades dos moradores.</p>
         </div>
     </section>
 
-    <!-- GALERIA ATUALIZADA COM DIVS, CLASSES DE GRADE E EFEITO DE CLIQUE -->
+    <!-- GALERIA DE IMAGENS -->
     <section class="galeria">
         <div class="item-galeria img-larga">
             <img src="RJ (1).png" alt="Detalhe do projeto 1">
@@ -257,18 +271,25 @@
         </div>
     </section>
 
+    <!-- RODAPÉ (Atualizado igual à Home) -->
     <footer id="contato">
-        <div>
-            <h4>Umquarto</h4>
-            <p>Escritório de arquitetura</p>
-        </div>
-        <div style="text-align: right;">
-            <p>atendimento online SP | BH</p>
+        <div style="text-align: left; max-width: 80%;">
+            <p>Atendimento online para todo o Brasil | Presencial em SP e BH</p>
             <p>escritorioumquarto@gmail.com</p>
-            <p>31 8369 1908</p>
-            <p><a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: var(--cor-texto);">Instagram</a> | <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: var(--cor-texto);">WhatsApp</a></p>
+            <p>
+                <a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: var(--cor-destaque); text-decoration: none; font-weight: 700;">Instagram</a> | 
+                <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: var(--cor-destaque); text-decoration: none; font-weight: 700;">WhatsApp</a>
+            </p>
         </div>
     </footer>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" class="whatsapp-flutuante">
+        <div class="whatsapp-tooltip"><span class="bolinha"></span> Estamos online</div>
+        <div class="whatsapp-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 334.3l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.4-186.6 184.4zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        </div>
+    </a>
 
     <!-- A ESTRUTURA INVISÍVEL DO MODAL -->
     <div id="meuModal" class="modal">
@@ -278,28 +299,23 @@
 
     <!-- O SCRIPT QUE FAZ O CLIQUE FUNCIONAR -->
     <script>
-        // Pega os elementos do modal
         var modal = document.getElementById("meuModal");
         var imgModal = document.getElementById("imagemAmpliada");
         var spanFechar = document.getElementsByClassName("fechar")[0];
         
-        // Pega todas as imagens dentro da galeria
         var imagens = document.querySelectorAll(".galeria img");
 
-        // Quando o usuário clicar em uma imagem, abre o modal
         imagens.forEach(function(img) {
             img.onclick = function(){
-                modal.style.display = "flex"; // Mostra o modal
-                imgModal.src = this.src; // Coloca a mesma foto que foi clicada no modal
+                modal.style.display = "flex"; 
+                imgModal.src = this.src; 
             }
         });
 
-        // Quando o usuário clicar no (x), fecha o modal
         spanFechar.onclick = function() {
             modal.style.display = "none";
         }
 
-        // Quando o usuário clicar em qualquer lugar escuro fora da foto, fecha também
         modal.onclick = function(evento) {
             if (evento.target !== imgModal) {
                 modal.style.display = "none";
