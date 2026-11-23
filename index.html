@@ -4,49 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umquarto | Arquitetura Autoral e Sem Dores de Cabeça</title>
-    
+    <meta name="theme-color" content="#1E3A5F">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
         /* ==========================================================================
-           🎛️ PAINEL DE CONTROLE GERAL (EDITE TUDO AQUI)
+           🎛️ PAINEL DE CONTROLE GERAL (PALETA & ESTILO DO APLICATIVO UMQUARTO)
            ========================================================================== */
         :root {
-            /* 🎨 1. CORES PRINCIPAIS */
-            --cor-fundo-site: #ffffff;          
-            --cor-texto-principal: #1a1a1a;     
-            --cor-texto-secundario: #555555;    
-            --cor-destaque: #333333; 
-            --cor-destaque-hover: #000000; 
-            --cor-fundo-trust: #1a1a1a; 
-            --cor-texto-trust: #ffffff;
-            
+            /* 🎨 1. CORES PRINCIPAIS (MESMA PALETA DO APLICATIVO) */
+            --cor-fundo-site: #F9F8F6;
+            --cor-superficie: #FFFFFF;
+            --cor-borda: #ECE6DF;
+            --cor-borda-forte: #DED5CC;
+            --cor-texto-principal: #2C1E1A;
+            --cor-texto-secundario: #7A6C65;
+            --cor-destaque: #1E3A5F;
+            --cor-destaque-hover: #152B47;
+            --cor-acento: #C24632;
+            --cor-ouro: #DA9B26;
+            --cor-fundo-trust: #1E3A5F;
+            --cor-texto-trust: #FFFFFF;
+
             /* Cores de Seções */
-            --cor-fundo-menu: rgba(255, 255, 255, 0.95);
-            --cor-fundo-servicos: #f4f4f4;      
-            --cor-fundo-orcamento: #f4f4f4;     
-            --cor-texto-orcamento: #1a1a1a; 
-            --cor-fundo-rodape: #f4f4f4;        
+            --cor-fundo-menu: rgba(255, 255, 255, 0.94);
+            --cor-fundo-servicos: #F5F2EE;
+            --cor-fundo-orcamento: #F5F2EE;
+            --cor-texto-orcamento: #2C1E1A;
+            --cor-fundo-rodape: #F5F2EE;
 
             /* 🔤 2. FONTE GLOBAL */
-            --fonte-unica: 'Montserrat', sans-serif;
-            
+            --fonte-unica: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
             /* 📏 3. TAMANHOS DE TEXTO */
-            --tamanho-menu-links: 14px;
-            --tamanho-sobre-titulo: 2.5rem;
-            --tamanho-sobre-texto: 1.1rem;
-            --tamanho-projeto-titulo: 1.8rem;
-            --tamanho-projeto-categoria: 0.9rem;
-            --tamanho-servicos-titulo: 2.5rem;
-            --tamanho-card-titulo: 1.3rem;
-            --tamanho-card-texto: 0.95rem;
-            --tamanho-orcamento-titulo-gigante: 3rem;
-            --tamanho-orcamento-subtitulo: 1.2rem;
+            --tamanho-menu-links: 13px;
+            --tamanho-sobre-titulo: 2.4rem;
+            --tamanho-sobre-texto: 1.05rem;
+            --tamanho-projeto-titulo: 1.65rem;
+            --tamanho-projeto-categoria: 0.85rem;
+            --tamanho-servicos-titulo: 2.35rem;
+            --tamanho-card-titulo: 1.25rem;
+            --tamanho-card-texto: 0.94rem;
+            --tamanho-orcamento-titulo-gigante: 2.8rem;
             --tamanho-orcamento-texto: 1rem;
-            --tamanho-estatistica-numero: 1.6rem;
-            --tamanho-estatistica-texto: 0.85rem;
-            --tamanho-form-titulo: 1.4rem;
-            --tamanho-rodape-titulo: 1.2rem;
+            --tamanho-estatistica-numero: 1.45rem;
+            --tamanho-estatistica-texto: 0.84rem;
+            --tamanho-form-titulo: 1.35rem;
             --tamanho-rodape-texto: 0.9rem;
 
             /* 🖼️ 4. IMAGENS DO SITE */
@@ -61,127 +65,459 @@
         }
 
         /* ==========================================================================
-           ⚙️ ESTRUTURA E ESTILOS
+           ⚙️ ESTRUTURA E ESTILOS (ESSÊNCIA ORIGINAL + VISUAL DO APP)
            ========================================================================== */
         * { font-family: var(--fonte-unica); box-sizing: border-box; }
-        body, html { margin: 0; padding: 0; background-color: var(--cor-fundo-site); color: var(--cor-texto-principal); scroll-behavior: smooth; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--cor-fundo-site);
+            color: var(--cor-texto-principal);
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
         .img-bg { width: 100%; height: 100%; background-size: cover; background-position: center; }
 
         .btn-primario {
-            display: inline-block; background-color: var(--cor-destaque); color: #fff; text-decoration: none;
-            padding: 18px 35px; font-size: 1.1rem; font-weight: 700; border-radius: 50px;
-            transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            text-transform: uppercase; letter-spacing: 1px;
+            display: inline-block;
+            background-color: var(--cor-destaque);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 34px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 999px;
+            transition: all 0.28s ease;
+            box-shadow: 0 10px 24px rgba(30, 58, 95, 0.24);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
-        .btn-primario:hover { background-color: var(--cor-destaque-hover); transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25); }
+        .btn-primario:hover {
+            background-color: var(--cor-destaque-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(30, 58, 95, 0.32);
+        }
 
-        nav { position: fixed; top: 0; width: 100%; height: 80px; padding: 0 50px; display: flex; justify-content: space-between; align-items: center; background-color: var(--cor-fundo-menu); z-index: 1000; border-bottom: 1px solid #eaeaea; }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--cor-fundo-menu);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--cor-borda);
+        }
         nav .logo { display: flex; align-items: center; text-decoration: none; }
-        nav .logo .img-logo { background-image: var(--img-logo); background-size: contain; background-repeat: no-repeat; background-position: left center; height: 55px; width: 200px; }
-        nav .menu-links { display: flex; align-items: center; gap: 30px; }
-        nav .menu-links a { text-decoration: none; color: var(--cor-texto-principal); font-size: var(--tamanho-menu-links); font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        nav .logo .img-logo {
+            background-image: var(--img-logo);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
+            height: 52px;
+            width: 190px;
+        }
+        nav .menu-links { display: flex; align-items: center; gap: 26px; }
+        nav .menu-links a {
+            text-decoration: none;
+            color: var(--cor-texto-secundario);
+            font-size: var(--tamanho-menu-links);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.25s ease;
+        }
         nav .menu-links a:hover { color: var(--cor-destaque); }
-        .btn-menu { background-color: var(--cor-destaque); color: #fff !important; padding: 10px 20px; border-radius: 8px; font-weight: 700 !important; }
-        .btn-menu:hover { background-color: var(--cor-destaque-hover) !important; color: white !important; }
+        .btn-menu {
+            background-color: var(--cor-destaque);
+            color: #fff !important;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.18);
+        }
+        .btn-menu:hover {
+            background-color: var(--cor-destaque-hover) !important;
+            color: #fff !important;
+        }
 
-        .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; padding: 80px 20px 0 20px; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: var(--img-capa); background-size: cover; background-position: center; filter: brightness(0.4); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; color: #fff; }
-        .hero-content h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .hero-content p { font-size: 1.3rem; font-weight: 400; margin-bottom: 40px; opacity: 0.9; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 0 20px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--img-capa);
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.42);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            color: #fff;
+        }
+        .hero-content h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+        }
+        .hero-content p {
+            font-size: 1.22rem;
+            font-weight: 400;
+            margin-bottom: 38px;
+            opacity: 0.92;
+            line-height: 1.65;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+        }
 
-        .trust-bar { background-color: var(--cor-fundo-trust); color: var(--cor-texto-trust); display: flex; justify-content: center; gap: 50px; padding: 20px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .trust-bar {
+            background-color: var(--cor-fundo-trust);
+            color: var(--cor-texto-trust);
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
         .trust-bar span { display: flex; align-items: center; gap: 10px; }
-        .trust-bar span i { color: #fff; font-style: normal; font-weight: 800; opacity: 0.6; }
+        .trust-bar span i { color: var(--cor-ouro); font-style: normal; font-weight: 800; }
 
-        .manifesto { padding: 100px 20px; max-width: 800px; margin: 0 auto; text-align: center; }
-        .manifesto h2 { font-size: var(--tamanho-sobre-titulo); font-weight: 700; margin-bottom: 20px; }
-        .manifesto p { font-size: var(--tamanho-sobre-texto); line-height: 1.8; font-weight: 400; color: var(--cor-texto-secundario); margin-bottom: 20px;}
-        .destaque-sobre { color: var(--cor-destaque); font-weight: 700; font-size: 1.3rem; }
+        .manifesto {
+            padding: 96px 20px;
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .manifesto h2 {
+            font-size: var(--tamanho-sobre-titulo);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: var(--cor-texto-principal);
+        }
+        .manifesto p {
+            font-size: var(--tamanho-sobre-texto);
+            line-height: 1.85;
+            font-weight: 400;
+            color: var(--cor-texto-secundario);
+            margin-bottom: 20px;
+        }
+        .manifesto p strong { color: var(--cor-texto-principal); }
+        .destaque-sobre {
+            color: var(--cor-destaque) !important;
+            font-weight: 600 !important;
+            font-size: 1.22rem !important;
+        }
 
-        .projetos { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 5px; padding: 5px; }
+        /* PORTFÓLIO — MESMA ESSÊNCIA COM CARDS ARREDONDADOS */
+        .projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
         .link-projeto { text-decoration: none; color: inherit; display: block; }
-        .projeto-item { position: relative; height: 400px; overflow: hidden; cursor: pointer; }
+        .projeto-item {
+            position: relative;
+            height: 390px;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 24px;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 6px 24px rgba(44, 30, 26, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .projeto-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 34px rgba(30, 58, 95, 0.14);
+        }
         .projeto-item .img-bg { transition: transform 0.6s ease; }
         .projeto-item.p1 .img-bg { background-image: var(--img-projeto-1); }
         .projeto-item.p2 .img-bg { background-image: var(--img-projeto-2); }
         .projeto-item.p3 .img-bg { background-image: var(--img-projeto-3); }
-        .projeto-item .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.75); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; color: white; text-align: center; }
-        .projeto-item:hover .img-bg { transform: scale(1.05); } 
-        .projeto-item:hover .overlay { opacity: 1; } 
+        .projeto-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 58, 95, 0.80);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            color: white;
+            text-align: center;
+            padding: 24px;
+        }
+        .projeto-item:hover .img-bg { transform: scale(1.05); }
+        .projeto-item:hover .overlay { opacity: 1; }
         .overlay h3 { font-size: var(--tamanho-projeto-titulo); margin: 0 0 10px 0; font-weight: 600; }
-        .overlay p { margin: 0; font-weight: 400; font-size: var(--tamanho-projeto-categoria); text-transform: uppercase; letter-spacing: 1px; color: #fff; opacity: 0.8; }
-        
-        .cta-projetos { text-align: center; padding: 50px 20px; }
+        .overlay p {
+            margin: 0;
+            font-weight: 500;
+            font-size: var(--tamanho-projeto-categoria);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #fff;
+            opacity: 0.88;
+        }
 
-        .servicos-section { padding: 100px 50px; background-color: var(--cor-fundo-servicos); }
-        .servicos-section .pre-titulo { color: var(--cor-destaque); font-size: var(--tamanho-servicos-pretitulo); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-        .servicos-section h2 { font-size: var(--tamanho-servicos-titulo); font-weight: 800; margin: 0 0 50px 0; line-height: 1.2;}
-        .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card-servico { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #eaeaea; transition: transform 0.3s, box-shadow 0.3s; }
-        .card-servico:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .cta-projetos { text-align: center; padding: 52px 20px 72px 20px; }
+
+        /* SERVIÇOS — CARDS ARREDONDADOS COM CORES E BORDAS DO APP */
+        .servicos-section {
+            padding: 96px 50px;
+            background-color: var(--cor-fundo-servicos);
+            border-top: 1px solid var(--cor-borda);
+        }
+        .servicos-section h2 {
+            font-size: var(--tamanho-servicos-titulo);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 0 0 48px 0;
+            line-height: 1.22;
+            color: var(--cor-texto-principal);
+        }
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .card-servico {
+            background: var(--cor-superficie);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 4px 20px rgba(44, 30, 26, 0.04);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+        }
+        .card-servico:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(30, 58, 95, 0.10);
+        }
         .card-servico .img-servico { height: 220px; width: 100%; background-size: cover; background-position: center; }
         .card-servico.s1 .img-servico { background-image: var(--img-servico-1); }
         .card-servico.s2 .img-servico { background-image: var(--img-servico-2); }
         .card-servico.s3 .img-servico { background-image: var(--img-servico-3); }
-        .card-servico .conteudo-card { padding: 30px; display: flex; flex-direction: column; height: 100%;}
-        .card-servico h3 { font-size: var(--tamanho-card-titulo); font-weight: 800; margin: 0 0 15px 0; }
-        .card-servico p { font-size: var(--tamanho-card-texto); color: var(--cor-texto-secundario); line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
-        .link-servico { color: var(--cor-destaque); text-decoration: none; font-weight: 700; font-size: var(--tamanho-card-texto); text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 5px;}
-        .link-servico:hover { color: var(--cor-destaque-hover); gap: 10px; transition: 0.3s; }
+        .card-servico .conteudo-card { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+        .card-servico h3 { font-size: var(--tamanho-card-titulo); font-weight: 600; margin: 0 0 12px 0; color: var(--cor-texto-principal); }
+        .card-servico p { font-size: var(--tamanho-card-texto); color: var(--cor-texto-secundario); line-height: 1.7; margin: 0 0 24px 0; flex-grow: 1; }
+        .link-servico {
+            color: var(--cor-acento);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.25s ease, color 0.25s ease;
+        }
+        .link-servico:hover { color: var(--cor-destaque); gap: 10px; }
 
-        /* AQUI: Ajuste no padding para ele preencher até embaixo uniformemente */
-        .orcamento-section { background-color: var(--cor-fundo-orcamento); padding: 80px 50px; color: var(--cor-texto-orcamento); position: relative; }
-        
-        /* AQUI: Remoção do margin-bottom para encostar perfeitamente no rodapé */
-        .orcamento-container { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 50px; }
-        
+        /* ORÇAMENTO — LAYOUT ORIGINAL COM CARDS ARREDONDADOS E CORES DO APP */
+        .orcamento-section {
+            background-color: var(--cor-fundo-orcamento);
+            padding: 72px 50px 80px 50px;
+            color: var(--cor-texto-orcamento);
+            position: relative;
+        }
+        .orcamento-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 48px;
+        }
         .orcamento-texto { flex: 1; min-width: 300px; }
-        .orcamento-texto h2 { font-size: var(--tamanho-orcamento-titulo-gigante); font-weight: 800; line-height: 1.1; margin: 0 0 20px 0; }
-        .orcamento-texto p { font-size: var(--tamanho-orcamento-texto); line-height: 1.6; opacity: 0.9; margin-bottom: 40px; max-width: 500px; }
-        
-        .estatisticas { display: inline-flex; gap: 45px; background: #fff; padding: 30px 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); flex-wrap: wrap;}
-        .stat-item h3 { color: var(--cor-destaque); font-size: var(--tamanho-estatistica-numero); margin: 0 0 5px 0; font-weight: 800;}
-        .stat-item p { font-size: var(--tamanho-estatistica-texto); margin: 0; line-height: 1.4; opacity: 0.8; max-width: 120px; font-weight: 600;}
-        
-        .formulario-card { background: #ffffff; color: var(--cor-texto-principal); padding: 40px; border-radius: 20px; width: 450px; max-width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border-top: 5px solid var(--cor-destaque); }
-        .formulario-card h3 { font-size: var(--tamanho-form-titulo); margin: 0 0 10px 0; font-weight: 800; }
-        .formulario-card p { font-size: 0.9rem; color: var(--cor-texto-secundario); margin-bottom: 25px;}
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--cor-texto-principal); text-transform: uppercase;}
-        .input-group input { width: 100%; padding: 15px; border: 2px solid #eaeaea; border-radius: 8px; font-size: 1rem; outline: none; font-family: var(--fonte-unica); transition: border-color 0.3s;}
-        .input-group input:focus { border-color: var(--cor-destaque); }
-        
-        .btn-whats { background-color: #25D366; color: #fff; border: none; width: 100%; font-family: var(--fonte-unica); padding: 18px; font-size: 1.1rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: 0.3s; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; text-transform: uppercase;}
-        .btn-whats:hover { background-color: #1ebd5a; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);}
-        .btn-whats svg { width: 20px; height: 20px; fill: white;}
+        .orcamento-texto h2 {
+            font-size: var(--tamanho-orcamento-titulo-gigante);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin: 0 0 20px 0;
+            color: var(--cor-texto-principal);
+        }
+        .orcamento-texto > p {
+            font-size: var(--tamanho-orcamento-texto);
+            line-height: 1.7;
+            color: var(--cor-texto-secundario);
+            margin-bottom: 36px;
+            max-width: 500px;
+        }
 
-        .whatsapp-flutuante { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; align-items: center; z-index: 9999; text-decoration: none; }
-        .whatsapp-tooltip { background: #ffffff; color: var(--cor-texto-principal); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 6px; }
+        .estatisticas {
+            display: inline-flex;
+            gap: 40px;
+            background: var(--cor-superficie);
+            padding: 28px 36px;
+            border-radius: 24px;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 6px 24px rgba(44, 30, 26, 0.05);
+            flex-wrap: wrap;
+        }
+        .stat-item h3 { color: var(--cor-destaque); font-size: var(--tamanho-estatistica-numero); margin: 0 0 5px 0; font-weight: 700; }
+        .stat-item p { font-size: var(--tamanho-estatistica-texto); margin: 0; line-height: 1.45; color: var(--cor-texto-secundario); max-width: 130px; font-weight: 500; }
+
+        .formulario-card {
+            background: var(--cor-superficie);
+            color: var(--cor-texto-principal);
+            padding: 38px;
+            border-radius: 24px;
+            width: 450px;
+            max-width: 100%;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 18px 40px rgba(30, 58, 95, 0.10);
+            border-top: 4px solid var(--cor-destaque);
+        }
+        .formulario-card h3 { font-size: var(--tamanho-form-titulo); margin: 0 0 10px 0; font-weight: 700; }
+        .formulario-card p { font-size: 0.9rem; color: var(--cor-texto-secundario); margin-bottom: 24px; line-height: 1.55; }
+        .input-group { margin-bottom: 18px; }
+        .input-group label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: var(--cor-texto-secundario);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid var(--cor-borda-forte);
+            border-radius: 16px;
+            font-size: 0.96rem;
+            color: var(--cor-texto-principal);
+            background-color: var(--cor-fundo-site);
+            outline: none;
+            font-family: var(--fonte-unica);
+            transition: border-color 0.25s, background-color 0.25s;
+        }
+        .input-group input:focus {
+            border-color: var(--cor-destaque);
+            background-color: #FFFFFF;
+        }
+
+        .btn-whats {
+            background-color: #25D366;
+            color: #fff;
+            border: none;
+            width: 100%;
+            font-family: var(--fonte-unica);
+            padding: 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: 0.28s;
+            margin-top: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .btn-whats:hover {
+            background-color: #1ebd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.28);
+        }
+        .btn-whats svg { width: 19px; height: 19px; fill: white; }
+
+        .whatsapp-flutuante { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; align-items: center; z-index: 9999; text-decoration: none; }
+        .whatsapp-tooltip {
+            background: var(--cor-superficie);
+            color: var(--cor-texto-principal);
+            border: 1px solid var(--cor-borda);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(44, 30, 26, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
         .whatsapp-tooltip .bolinha { width: 8px; height: 8px; background-color: #25D366; border-radius: 50%; animation: pulsar 2s infinite; }
-        .whatsapp-icon { background-color: #25D366; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: transform 0.3s; }
-        .whatsapp-icon:hover { transform: scale(1.1); }
-        .whatsapp-icon svg { width: 35px; height: 35px; fill: #ffffff; }
+        .whatsapp-icon {
+            background-color: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+            transition: transform 0.25s;
+        }
+        .whatsapp-icon:hover { transform: scale(1.08); }
+        .whatsapp-icon svg { width: 32px; height: 32px; fill: #ffffff; }
 
         @keyframes pulsar { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
 
-        /* AQUI: Remoção do border-top que separava o footer */
-        footer { background-color: var(--cor-fundo-rodape); padding: 60px 50px; display: block; font-size: var(--tamanho-rodape-texto); }
-        
+        footer {
+            background-color: var(--cor-fundo-rodape);
+            padding: 50px 50px 60px 50px;
+            display: block;
+            font-size: var(--tamanho-rodape-texto);
+            color: var(--cor-texto-secundario);
+        }
+        footer a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+        footer a:hover { color: var(--cor-acento); }
+
         @media (max-width: 768px) {
-            nav { height: auto; padding: 15px 20px; flex-direction: column; } 
-            nav .menu-links { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 15px;} 
-            .hero-content h1 { font-size: 2.2rem; }
-            .trust-bar { flex-direction: column; text-align: center; gap: 15px; }
-            .projetos { grid-template-columns: 1fr; } 
+            nav { height: auto; padding: 14px 20px; flex-direction: column; }
+            nav .menu-links { margin-top: 12px; flex-wrap: wrap; justify-content: center; gap: 12px; }
+            .hero-content h1 { font-size: 2.15rem; }
+            .hero-content p { font-size: 1rem; }
+            .trust-bar { flex-direction: column; text-align: center; gap: 14px; }
+            .projetos { grid-template-columns: 1fr; padding: 0 20px; }
             .servicos-section, .orcamento-section { padding: 60px 20px; }
-            
-            .orcamento-container { flex-direction: column; text-align: center; align-items: center; } 
-            
-            .estatisticas { flex-direction: row; gap: 15px; width: 100%; justify-content: center;}
-            .formulario-card { width: 100%; padding: 30px 20px; } 
-            footer { text-align: center; } 
-            footer div { text-align: center !important; margin: 0 auto; }
+            .orcamento-container { flex-direction: column; text-align: center; align-items: center; }
+            .estatisticas { flex-direction: row; gap: 18px; width: 100%; justify-content: center; padding: 22px 20px; }
+            .formulario-card { width: 100%; padding: 28px 20px; }
+            footer { text-align: center; padding: 40px 20px; }
+            footer div { text-align: center !important; margin: 0 auto; max-width: 100% !important; }
         }
     </style>
 </head>
@@ -201,7 +537,7 @@
         <div class="hero-content">
             <h1>Arquitetura sob medida para a sua realidade!</h1>
             <p>Esqueça os projetos padronizados. Entregamos exclusividade estética e segurança técnica impecável, do primeiro esboço até a execução final.</p>
-            <a href="https://forms.gle/Z5iRuJ47ukP549Hk6" target="_blank" class="btn-primario">Solicite uma proposta</a>
+            <a href="https://forms.gle/Z5iRuJ47ukP549Hk6" target="_blank" rel="noopener noreferrer" class="btn-primario">Solicite uma proposta</a>
         </div>
     </header>
 
@@ -214,9 +550,9 @@
     <section id="sobre" class="manifesto">
         <h2>Entendemos a sua necessidade.</h2>
         <p>A UmQuarto nasceu da percepção de que a arquitetura não pode ser apenas um desenho bonito. Com experiência prática desenvolvendo espaços desde 2019, consolidamos nosso escritório em 2026 para oferecer <strong>atenção absoluta ao seu projeto</strong>.</p>
-        
+
         <p>Transformamos a técnica complexa da arquitetura em um processo leve e seguro para você. O nome UmQuarto representa a fração ideal de um projeto: unimos o <strong>espaço</strong>, a sua <strong>necessidade</strong>, o seu <strong>perfil</strong> e a nossa <strong>técnica</strong>.</p>
-        
+
         <p class="destaque-sobre">Nós cuidamos da complexidade técnica para que você possa curtir a experiência de realizar seu espaço.</p>
     </section>
 
@@ -230,17 +566,17 @@
                 </div>
             </div>
         </a>
-        
+
         <a href="reforma-casa joão.html" class="link-projeto">
             <div class="projeto-item p2">
                 <div class="img-bg"></div>
                 <div class="overlay">
-                    <h3>Reforma J|N</h3> 
+                    <h3>Reforma J|N</h3>
                     <p>Ver detalhes do projeto</p>
                 </div>
             </div>
         </a>
-        
+
         <a href="#" class="link-projeto">
             <div class="projeto-item p3">
                 <div class="img-bg"></div>
@@ -251,9 +587,9 @@
             </div>
         </a>
     </section>
-    
+
     <div class="cta-projetos">
-        <a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" class="btn-primario" style="background-color: #1a1a1a;">Veja mais no nosso Instagram</a>
+        <a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" rel="noopener noreferrer" class="btn-primario">Veja mais no nosso Instagram</a>
     </div>
 
     <section id="servicos" class="servicos-section">
@@ -265,7 +601,7 @@
                 <div class="conteudo-card">
                     <h3>Consultoria arquitetônica</h3>
                     <p>A solução perfeita para quem busca transformar seu espaço de forma rápida e assertiva. Receba o nosso olhar técnico através de orientações profissionais e soluções práticas, aplicáveis imediatamente. Entregamos o direcionamento completo de layout, mobiliário, materiais, cores e decoração para você renovar o seu ambiente.</p>
-                    <a href="#orcamento" class="link-servico">Cotar Arquitetônico &rarr;</a>
+                    <a href="#orcamento" class="link-servico">Cotar Consultoria &rarr;</a>
                 </div>
             </div>
 
@@ -281,7 +617,7 @@
             <div class="card-servico s3">
                 <div class="img-servico"></div>
                 <div class="conteudo-card">
-                     <h3>Projeto Arquitetônico</h3>
+                    <h3>Projeto Arquitetônico</h3>
                     <p>Muito mais do que estética, o projeto arquitetônico é a garantia de previsibilidade. Criamos uma distribuição inteligente de cada metro quadrado, respeitando rigorosamente as normas técnicas e de acessibilidade. Entregamos um guia exato para a sua obra, assegurando uma execução tranquila, segura e com zero retrabalho.</p>
                     <a href="#orcamento" class="link-servico">Cotar Arquitetônico &rarr;</a>
                 </div>
@@ -294,7 +630,7 @@
             <div class="orcamento-texto">
                 <h2>Entre em contato<br>e receba seu <br>orçamento agora.</h2>
                 <p>Nosso formato de atendimento online garante proximidade e comunicação constante durante todas as fases do desenvolvimento, em qualquer lugar do Brasil.</p>
-                
+
                 <div class="estatisticas">
                     <div class="stat-item">
                         <h3>Exclusivo</h3>
@@ -314,7 +650,7 @@
             <div class="formulario-card">
                 <h3>Vamos alinhar as ideias?</h3>
                 <p>Preencha os dados e fale conosco para entender como podemos te ajudar.</p>
-                
+
                 <div class="input-group">
                     <label>Seu nome</label>
                     <input type="text" id="nome_lead" placeholder="Como gosta de ser chamado?">
@@ -336,13 +672,13 @@
             <p>Atendimento online para todo o Brasil | Presencial em SP e BH</p>
             <p>escritorioumquarto@gmail.com</p>
             <p>
-                <a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" style="color: var(--cor-destaque); text-decoration: none; font-weight: 700;">Instagram</a> | 
-                <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" style="color: var(--cor-destaque); text-decoration: none; font-weight: 700;">WhatsApp</a>
+                <a href="https://www.instagram.com/arq.umquarto?igsh=MTNzYXdtYnlqajFiaA==" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             </p>
         </div>
     </footer>
 
-    <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" class="whatsapp-flutuante">
+    <a href="https://wa.me/message/YM6JWHFJV6Z5J1" target="_blank" rel="noopener noreferrer" class="whatsapp-flutuante">
         <div class="whatsapp-tooltip"><span class="bolinha"></span> Estamos online</div>
         <div class="whatsapp-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 334.3l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.4-186.6 184.4zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
@@ -351,18 +687,18 @@
 
     <script>
         function enviarWhatsApp() {
-            var nome = document.getElementById('nome_lead').value;
-            
-            if(!nome) {
+            var nome = document.getElementById('nome_lead').value.trim();
+
+            if (!nome) {
                 alert('Por favor, nos conte seu nome para iniciarmos a conversa!');
                 document.getElementById('nome_lead').focus();
                 return;
             }
-            
+
             var mensagem = "Olá! Me chamo *" + nome + "*. Estava no site da UmQuarto e gostaria de falar diretamente com vocês sobre as minhas ideias para um projeto arquitetônico.";
-            var numeroWhatsApp = "5531983691908"; 
+            var numeroWhatsApp = "5531983691908";
             var url = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensagem);
-            
+
             window.open(url, '_blank');
         }
     </script>
